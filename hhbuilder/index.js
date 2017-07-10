@@ -39,11 +39,10 @@ deleteMember = function(event) {
   event.target.parentElement.remove()
 }
 
-
 document.getElementsByTagName('form')[0].addEventListener('submit', function(event){
   submitHousehold(event)
   alert('Your form was successfully submitted')
-},
+}
 )
 
 submitHousehold = function(event) {
