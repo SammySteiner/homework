@@ -8,7 +8,7 @@ addButton.addEventListener('click', function(event) {
 })
 
 addHouseholdMember = function(){
-  var age = document.getElementsByName('age')[0].value
+  var age = Number(document.getElementsByName('age')[0].value)
   var relationship = document.getElementsByName('rel')[0].value
   var smoker = document.getElementsByName('smoker')[0].checked
   if (validate(age, relationship)) {
@@ -28,7 +28,8 @@ validate = function(age, relationship){
 }
 
 addErrorMessage = function(age){
-  if (!age || parseInt(age, 10) <= 0) {
+  var parsedAge = parseInt(age, 10)
+  if ( !parsedAge || parsedAge <= 0 ) {
     alert('Your entry was not submitted because the age was not valid. Age is required and must be greater than 0')
   } else {
     alert('Your entry was not submitted because the relationship was not included')
@@ -59,4 +60,5 @@ submitHousehold = function(event) {
     data.push({age: info[0], relationship: info[1], smoker: info[2]})
   }
   document.getElementsByTagName('pre')[0].innerHTML = JSON.stringify(data)
+  document.getElementsByClassName('debug')[0].style.display = 'inline-block'
 }
